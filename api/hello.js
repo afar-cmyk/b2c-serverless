@@ -20,7 +20,7 @@ export default async (req, res) => {
 
     result = await page.title();
   } catch (error) {
-    return callback(error);
+    return console.log(error);
   } finally {
     if (browser !== null) {
       await browser.close();
