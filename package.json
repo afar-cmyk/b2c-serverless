@@ -24,8 +24,5 @@
   },
   "devDependencies": {
     "puppeteer": "^15.5.0"
-  },
-  "engines": {
-    "node": ">v14.1.0"
   }
 }

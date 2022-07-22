@@ -1,4 +1,5 @@
 import chromium from "chrome-aws-lambda";
+import puppeteer from "puppeteer-core";
 
 async function getBrowserInstance() {
   const executablePath = await chromium.executablePath;
