@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     defaultViewport: chromium.defaultViewport,
     executablePath:
       process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath),
-    headless: true,
+    headless: chromium.headless,
     ignoreHTTPSErrors: true,
   });
 
