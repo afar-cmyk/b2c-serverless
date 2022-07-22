@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/afar-cmyk/b2c-serverless#readme",
   "dependencies": {
+    "@types/puppeteer-core": "^5.4.0",
     "chrome-aws-lambda": "^10.1.0",
     "dotenv": "^16.0.1",
     "prod": "^1.0.0",

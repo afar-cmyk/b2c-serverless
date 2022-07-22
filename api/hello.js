@@ -44,7 +44,7 @@ export default async (req, res) => {
 
   res.json({
     hola: "mundo",
-    prueba: 1,
+    prueba: 2,
     resp: result,
   });
 };
