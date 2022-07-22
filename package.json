@@ -21,6 +21,6 @@
     "chrome-aws-lambda": "^10.1.0",
     "dotenv": "^16.0.1",
     "prod": "^1.0.0",
-    "puppeteer-core": "^15.5.0"
+    "puppeteer-core": "15.4.0"
   }
 }
