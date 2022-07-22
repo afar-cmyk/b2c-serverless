@@ -1,18 +1,33 @@
 import chromium from "chrome-aws-lambda";
 
+async function getBrowserInstance() {
+  const executablePath = await chromium.executablePath;
+
+  if (!executablePath) {
+    const puppeteer = require("puppeteer");
+    return puppeteer.launch({
+      args: chromium.args,
+      executablePath: process.env.CHROME_EXECUTABLE_PATH,
+      headless: true,
+      ignoreHTTPSErrors: true,
+    });
+  }
+
+  return chromium.puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath,
+    headless: chromium.headless,
+    ignoreHTTPSErrors: true,
+  });
+}
+
 export default async (req, res) => {
   let result = null;
   let browser = null;
 
   try {
-    browser = await chromium.puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath:
-        process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath),
-      headless: chromium.headless,
-      ignoreHTTPSErrors: true,
-    });
+    browser = await getBrowserInstance();
 
     let page = await browser.newPage();
 
@@ -29,6 +44,7 @@ export default async (req, res) => {
 
   res.json({
     hola: "mundo",
+    prueba: 1,
     resp: result,
   });
 };
