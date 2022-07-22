@@ -1,4 +1,5 @@
 import chromium from "chrome-aws-lambda";
+import puppeteer from "puppeteer-core";
 
 export default async (req, res) => {
   let result = null;
