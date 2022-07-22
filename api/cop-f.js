@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer-core');
 
 export default async (req, res) =>{
 
-  let xpath = '//*[@id="quote-page-strip"]/div[3]/div/div[2]/span[1]';
+  let xpath = '//input[@id="answer"]';
 
   const browser = await puppeteer.launch(process.env.AWS_EXECUTION_ENV ? {
     args: chrome.args,
@@ -17,15 +17,17 @@ export default async (req, res) =>{
 
   const page = await browser.newPage();
 
-  await page.goto("https://www.cnbc.com/quotes/BTC.CB=");
+  await page.goto("https://www.currency.me.uk/convert/usd/cop");
 
-  const [btc] = await page.$x(xpath);
-  const btcContenido = await btc.getProperty("textContent");
-  const btcCrudo = await btcContenido.jsonValue();
+  const [cop] = await page.$x(xpath);
+  const copContenido = await cop.getProperty("value");
+  const copCrudo = await copContenido.jsonValue();
 
   await browser.close();
 
   res.json({
-    btcCrudo,
+    copCrudo,
   });
 }
+
+

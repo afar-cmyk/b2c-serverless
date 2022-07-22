@@ -23,6 +23,8 @@ export default async (req, res) =>{
   const copContenido = await cop.getProperty("textContent");
   const copCrudo = await copContenido.jsonValue();
 
+  await browser.close();
+
   res.json({
     copCrudo,
   });
