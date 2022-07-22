@@ -28,7 +28,16 @@ export default async (req, res) => {
 
   await browser.close();
 
+  const tratarValores = (valores) => {
+    let quitarSigno = valores.replace("$", "");
+    let quitarComa = quitarSigno.replace(",", "");
+    let convertirNumero = parseFloat(quitarComa);
+    return convertirNumero;
+  };
+
+  let valorFinal = tratarValores(btcCrudo);
+
   res.json({
-    btcCrudo,
+    btc: valorFinal,
   });
 };

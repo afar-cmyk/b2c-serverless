@@ -27,7 +27,22 @@ export default async (req, res) => {
 
   await browser.close();
 
+  const tratarValores = (valores) => {
+    let convertirNumero = parseFloat(valores);
+    return convertirNumero;
+  };
+
+  let valorFinal = tratarValores(copCrudo);
+
+  // Para ver el valor en pesos colombianos usar:
+  // console.log(
+  //   new Intl.NumberFormat("CO", {
+  //     style: "currency",
+  //     currency: "COP",
+  //   }).format(valorFinal)
+  // );
+
   res.json({
-    copCrudo,
+    cop: valorFinal,
   });
 };
